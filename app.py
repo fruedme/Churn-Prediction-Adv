@@ -39,7 +39,7 @@ if st.button("Customer churn prediction"):
 
     prob_result = predict_proba(
         np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
-    st.text(str(round(prob_result[0][1]*100,2))+"%")    
+    st.text("Possibility of churn: "+str(round(prob_result[0][1]*100,2))+"%")    
 
 
 st.text('')
