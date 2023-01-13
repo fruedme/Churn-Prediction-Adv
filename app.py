@@ -9,7 +9,7 @@ st.title('Customer Churn Prediction')
 st.markdown('Use customers features to predict whether this customer is going to churn or not')
 
 st.header("Customer Profile")
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with col1:
     Tenure = st.slider('Tenure', 0, 31, 1)
@@ -19,6 +19,9 @@ with col1:
     DaysSinceLastOrder = st.slider('DaySinceLastOrder', 0, 30, 1)
 
 with col2:
+    pass
+
+with col3:
     Gender = st.selectbox('Gender', ('Male', 'Female'))
     MaritalStatus = st.selectbox("MaritalStatus", ('Single', 'Divorced', 'Married'))
     PreferedOrderCat = st.selectbox('PreferedOrderCat', ('Fashion', 'Grocery', 'Laptop & Accessory', 'Mobile', 'Mobile Phone'))
