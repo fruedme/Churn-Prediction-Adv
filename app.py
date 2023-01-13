@@ -33,9 +33,9 @@ def predict_proba(data):
 
 st.text('')
 if st.button("Customer churn prediction"):
-    result = predict(
-        np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
-    st.text(result[0])
+    # result = predict(
+    #     np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
+    # st.text(result[0])
 
     prob_result = predict_proba(
         np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
