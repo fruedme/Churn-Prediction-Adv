@@ -30,6 +30,7 @@ def predict_proba(data):
     return clf.predict_proba(data)
 
 
+
 st.text('')
 if st.button("Customer churn prediction"):
     result = predict(
@@ -38,7 +39,7 @@ if st.button("Customer churn prediction"):
 
     prob_result = predict_proba(
         np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
-    st.text(prob_result[0][1])    
+    st.text(round(prob_result[0][1],1)*100)    
 
 
 st.text('')
