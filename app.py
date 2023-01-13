@@ -47,7 +47,7 @@ for col in encode:
     del df[col]
 
 # selecting features and target data
-X = df.drop('Churn', axis=1)
+X = df.drop(['Churn', 'Unnamed: 0'], axis=1)
 y = df[['Churn']]
 
 st.text('')
