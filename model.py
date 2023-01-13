@@ -12,9 +12,19 @@ seed = 42
 df = pd.read_csv("churn_predict.csv")
 df.sample(frac=1, random_state=seed)
 
+encode = ['PreferedOrderCat', 'Gender', 'MaritalStatus']
+
+for col in encode:
+    dummy = pd.get_dummies(df[col])
+    df = pd.concat([df,dummy], axis=1)
+    del df[col]
+
 # selecting features and target data
-X = df[['Tenure', 'Complain', 'SatisfactionScore', 'CashbackAmount', 'DaySinceLastOrder']]
+X = df.drop('Churn', axis=1)
 y = df[['Churn']]
+
+# X.to_csv('X_sample.csv', index=False)
+# y.to_csv('y_sample.csv')
 
 # split data into train and test sets
 # 70% training and 30% test
