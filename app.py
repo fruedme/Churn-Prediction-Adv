@@ -26,9 +26,9 @@ def predict(data):
     clf = joblib.load("xgc_model.sav")
     return clf.predict(data)
 
-def predict_prob(data):
+def predict_proba(data):
     clf = joblib.load("xgc_model.sav")
-    return clf.predict_prob(data)
+    return clf.predict_proba(data)
 
 
 st.text('')
@@ -37,7 +37,7 @@ if st.button("Customer churn prediction"):
         np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
     st.text(result[0])
 
-    prob_result = predict_prob(
+    prob_result = predict_proba(
         np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
     st.text(prob_result[0])    
 
