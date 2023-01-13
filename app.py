@@ -22,12 +22,10 @@ with col2:
     pass
 
 with col3:
-    Gender = st.selectbox('Gender', ('Male', 'Female'))
-    MaritalStatus = st.selectbox("MaritalStatus", ('Single', 'Divorced', 'Married'))
     PreferedOrderCat = st.selectbox('PreferedOrderCat', ('Fashion', 'Grocery', 'Laptop & Accessory', 'Mobile', 'Mobile Phone'))
-
-
-
+    Gender = st.selectbox('Gender', ('Female', 'Male'))
+    MaritalStatus = st.selectbox("MaritalStatus", ('Divorced', 'Married', 'Single'))
+    
 def predict(data):
     clf = joblib.load("xgc_model.sav")
     return clf.predict(data)
@@ -56,8 +54,8 @@ if st.button("Customer churn prediction"):
     #     np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
     # st.text(result[0])
 
-    prob_result = predict_proba(np.array(X))
-        # np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
+    prob_result = predict_proba(
+        np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder, Fashion, Grocery, Laptop&Accessory, Mobile, MobilePhone, Others, Female, Male, Divorced, Married, Single]]))
     st.text("Possibility of churn: "+str(round(prob_result[0][1]*100,2))+"%")    
 
 
