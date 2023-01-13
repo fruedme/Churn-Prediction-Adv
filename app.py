@@ -36,7 +36,19 @@ def predict_proba(data):
     clf = joblib.load("xgc_model.sav")
     return clf.predict_proba(data)
 
+df = pd.read_csv("churn_predict.csv")
+df.sample(frac=1, random_state=42)
 
+encode = ['PreferedOrderCat', 'Gender', 'MaritalStatus']
+
+for col in encode:
+    dummy = pd.get_dummies(df[col])
+    df = pd.concat([df,dummy], axis=1)
+    del df[col]
+
+# selecting features and target data
+X = df.drop('Churn', axis=1)
+y = df[['Churn']]
 
 st.text('')
 if st.button("Customer churn prediction"):
@@ -44,8 +56,8 @@ if st.button("Customer churn prediction"):
     #     np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
     # st.text(result[0])
 
-    prob_result = predict_proba(
-        np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
+    prob_result = predict_proba(X)
+        # np.array([[Tenure, Complain, Cashback, SatisfactionScore, DaysSinceLastOrder]]))
     st.text("Possibility of churn: "+str(round(prob_result[0][1]*100,2))+"%")    
 
 
