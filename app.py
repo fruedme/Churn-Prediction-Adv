@@ -19,9 +19,9 @@ with col1:
     DaysSinceLastOrder = st.slider('DaySinceLastOrder', 0, 30, 1)
 
 with col2:
-    Gender = st.sidebar.selectbox('Gender', ('Male', 'Female'))
-    MaritalStatus = st.sidebar.selectbox("MaritalStatus", ('Single', 'Divorced', 'Married'))
-    PreferedOrderCat = st.sidebar.selectbox('PreferedOrderCat', ('Fashion', 'Grocery', 'Laptop & Accessory', 'Mobile', 'Mobile Phone'))
+    Gender = st.selectbox('Gender', ('Male', 'Female'))
+    MaritalStatus = st.selectbox("MaritalStatus", ('Single', 'Divorced', 'Married'))
+    PreferedOrderCat = st.selectbox('PreferedOrderCat', ('Fashion', 'Grocery', 'Laptop & Accessory', 'Mobile', 'Mobile Phone'))
 
 
 
